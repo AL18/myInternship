@@ -7,14 +7,17 @@
 // }
 //
 // console.log(findFactorial(4));
-let factorial = 1;
+const memo = {'1': 1};
 
-function recursionFactorial(a) {
+function recursionFactorial(a, memo) {
+    if (memo[a])
+        return memo[a];
+
     if (a > 1) {
-        factorial *= a;
-        recursionFactorial(--a);
+        return memo[a] = a * recursionFactorial(a-1, memo);
     }
-    return factorial;
 }
 
-console.log(recursionFactorial(4));
+console.log(recursionFactorial(5,memo));
+console.log(recursionFactorial(7,memo));
+console.log(recursionFactorial(8,memo));
