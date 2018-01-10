@@ -189,7 +189,7 @@ function displayDial(min = 0, sec = 0) {
 // Рисуем минуты
     contextHTML.beginPath();
     contextHTML.strokeStyle = '#000000';
-    contextHTML.lineWidth = 3;
+    contextHTML.lineWidth = 4;
     contextHTML.moveTo(xCenterClock, yCenterClock);
     contextHTML.lineTo(xCenterClock + lengthMinutes * Math.cos (Math.PI / 2 - t_min * ( Math.PI / 180 ) ),
         yCenterClock - lengthMinutes * Math.sin( Math.PI / 2 - t_min * ( Math.PI/180 ) ) );
