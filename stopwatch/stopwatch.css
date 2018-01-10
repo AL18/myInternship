@@ -14,6 +14,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 50%;
+}
+
+#split_output {
+    padding-top: 5px;
 }
 
 

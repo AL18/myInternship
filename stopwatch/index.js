@@ -186,9 +186,20 @@ function displayDial(min = 0, sec = 0) {
     let t_sec = 6 * sec;
     let t_min = 6 * ( min + ( 1/60 ) * sec );
 
+// Рисуем минуты
+    contextHTML.beginPath();
+    contextHTML.strokeStyle = '#000000';
+    contextHTML.lineWidth = 3;
+    contextHTML.moveTo(xCenterClock, yCenterClock);
+    contextHTML.lineTo(xCenterClock + lengthMinutes * Math.cos (Math.PI / 2 - t_min * ( Math.PI / 180 ) ),
+        yCenterClock - lengthMinutes * Math.sin( Math.PI / 2 - t_min * ( Math.PI/180 ) ) );
+    contextHTML.stroke();
+    contextHTML.closePath();
+
 
 // Рисуем секунды
     contextHTML.beginPath();
+    contextHTML.lineWidth = 2;
     contextHTML.strokeStyle = '#FF0000';
     contextHTML.moveTo(xCenterClock, yCenterClock);
     contextHTML.lineTo( xCenterClock + lengthSeconds * Math.cos( Math.PI / 2 - t_sec * (Math.PI / 180 ) ),
@@ -196,15 +207,7 @@ function displayDial(min = 0, sec = 0) {
     contextHTML.stroke();
     contextHTML.closePath();
 
-// Рисуем минуты
-    contextHTML.beginPath();
-    contextHTML.strokeStyle = '#000000';
-    contextHTML.lineWidth = 3;
-    contextHTML.moveTo(xCenterClock, yCenterClock);
-    contextHTML.lineTo(xCenterClock + lengthMinutes * Math.cos (Math.PI / 2 - t_min * ( Math.PI / 180 ) ),
-    yCenterClock - lengthMinutes * Math.sin( Math.PI / 2 - t_min * ( Math.PI/180 ) ) );
-    contextHTML.stroke();
-    contextHTML.closePath();
+
 
 // Рисуем центр часов
     contextHTML.beginPath();
