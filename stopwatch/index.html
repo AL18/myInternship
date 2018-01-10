@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Stopwatch</title>
-
+    <link rel="stylesheet" href="stopwatch.css">
 </head>
 <body onload="show();">
-<canvas height="300" width="300" id="dial"></canvas>
-<div>Time: <span id="time"></span></div>
-<input id="start" type="button" value=" Start " onclick="check();">
-<input id="split" type="button" value="Split" disabled="true" onclick="split()">
-<input type="button" value="Reset" onclick="reset()">
+<div class="wrapper_wrapper">
+    <div class="wrapper">
 
-<div id="split_output">
+        <div><canvas height="300" width="300" id="dial"></canvas></div>
 
+        <div class="number-container">
+            <div>Time: <span id="time"></span></div>
+            <input id="start" type="button" value=" Start " onclick="check();">
+            <input id="split" type="button" value="Split" disabled="true" onclick="split()">
+            <input type="button" value="Reset" onclick="reset()">
+
+            <div id="split_output">
+
+            </div>
+        </div>
+    </div>
 </div>
-
+</div>
 
 <script src="index.js"></script>
 </body>

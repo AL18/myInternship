@@ -70,12 +70,11 @@ function formatTime(time) {
 
 function show() {
     $time = document.getElementById('time');
-    update;
+    update();
 }
 
 function update() {
     $time.innerHTML = formatTime(x.time())
-    // displayDial();
 }
 
 function start() {
@@ -119,7 +118,7 @@ function split() {
     }
 }
 
-function displayDial(min, sec) {
+function displayDial(min = 0, sec = 0) {
     let canvasHTML = document.getElementById('dial');
     let contextHTML = canvasHTML.getContext('2d');
     contextHTML.strokeRect(0, 0, canvasHTML.width, canvasHTML.height);
@@ -182,7 +181,7 @@ function displayDial(min, sec) {
 
 // Рисуем стрелки
     let lengthSeconds = radiusNum - 10;
-    let lengthMinutes = radiusNum - 15;
+    let lengthMinutes = radiusNum - 25;
     let d = new Date();
     let t_sec = 6 * sec;
     let t_min = 6 * ( min + ( 1/60 ) * sec );
