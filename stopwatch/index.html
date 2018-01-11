@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Stopwatch</title>
-    <link rel="stylesheet" href="stopwatch.css">
+    <!--<link rel="stylesheet" href="bundle.css">-->
 </head>
-<body onload="show();">
+<body>
 <div class="wrapper_wrapper">
     <div class="wrapper">
 
@@ -13,9 +13,9 @@
 
         <div class="number-container">
             <div>Time: <span id="time"></span></div>
-            <input id="start" type="button" value=" Start " onclick="check();">
-            <input id="split" type="button" value="Split" disabled="true" onclick="split()">
-            <input type="button" value="Reset" onclick="reset()">
+            <input id="start" type="button" value=" Start ">
+            <input id="split" type="button" value="Split" disabled="true">
+            <input id="reset" type="button" value="Reset">
 
             <div id="split_output">
 
@@ -23,8 +23,7 @@
         </div>
     </div>
 </div>
-</div>
+<script src="bundle.js"></script>
 
-<script src="index.js"></script>
 </body>
 </html>
