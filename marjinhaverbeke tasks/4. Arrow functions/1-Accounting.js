@@ -12,7 +12,14 @@ const inventory = [
     {type:   "machine", value:   77}
 ]
 
-let totalMachineValue =
 
-console.log(totalMachineValue)
+
+    let totalMachineValue = inventory.filter( curVal => curVal.type === 'machine' )
+        .reduce( (sum, $curVal) => sum += $curVal.value, 0 )
+    console.log(totalMachineValue)
+
+
+
+
+
 
