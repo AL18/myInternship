@@ -1,5 +1,4 @@
 // Object literals.1:
-
 //  Fake point
 
 //  Use a single object literal to create an object that is indistinguishable from a Point instance,
