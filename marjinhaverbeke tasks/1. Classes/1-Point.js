@@ -20,15 +20,11 @@ class Point {
         let xSum = this.x + cons.x;
         let ySum = this.y + cons.y;
 
-        return {
-            Point: {
+        return new Point(xSum, ySum)
 
-                x: xSum,
-                y: ySum
-            }
         }
     }
-}
+
 
 
 console.log(new Point(1, 2).plus(new Point(2, 1)))

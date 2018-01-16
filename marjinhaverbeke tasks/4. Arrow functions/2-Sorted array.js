@@ -18,17 +18,23 @@ class SortedArray {
         this.content = []
     }
 
-    insert(elt) {
-        this.content.splice(this.findIndex( (elt, index, array) => {
-                let a = elt;
-                let b = array[index+1];
-            return a > b ? -1 : 1
+    findPos(elt) {
+        const position = this.content.findIndex(
+            (item, index, array) => this.compare(elt, item) < 0
+        );
 
-        }), 0, elt)
+        if (position === -1)
+            return this.content.length
+
+        return position;
     }
+
+    insert(elt) {
+            this.content.splice(this.findPos(elt), 0, elt)
+        }
 }
 
-let sorted = new SortedArray(function(a, b) { return a - b })
+const sorted = new SortedArray( (a, b) => {return a - b })
 sorted.insert(5)
 sorted.insert(1)
 sorted.insert(2)

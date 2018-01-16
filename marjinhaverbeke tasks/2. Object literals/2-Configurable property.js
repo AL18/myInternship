@@ -6,14 +6,13 @@
 // with type and value properties containing the value of the arguments by those names, and a third property,
 //     named by the sourceProperty option,4 set to the value of the sourceValue option.
 
-function startNode(type, value, options) {
-    let key = options.sourceProperty
-    return {
+ startNode =
+     (type, value, options) => ({
         type: type,
         value: value,
-        [key]: options.sourceValue
-    }
-}
+        [options.sourceProperty]: options.sourceValue
+    })
+
 console.log(startNode("Identifier", "foo", {
     sourceProperty: "src",
     sourceValue: "bar.js"

@@ -5,25 +5,26 @@
 // Refactor the code to use a getter (get verb() { ... }) instead of an instance property.
 
 class Speaker {
-
-    constructor(name, verb = 'says') {
+    constructor(name, verb) {
         this.name = name
-        this.verb = verb
+        this._verb = verb || "says"
+    }
+    speak(text) {
+        console.log(this.name + " " + this.verb + " '" + text + "'")
     }
 
-    speak(text) {
-        console.log(`${this.name} ${this.verb} '${text}'`)
+    get verb() {
+        return this._verb
     }
 }
 
 class Shouter extends Speaker {
-
     constructor(name) {
         super(name, "shouts")
     }
 
-    get text() {
-        return text.toUpperCase();
+    speak(text) {
+        super.speak(text.toUpperCase())
     }
 }
 
