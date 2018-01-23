@@ -10,44 +10,29 @@
 //     It scans the content of those pages for the word “Piranha”,
 //     and logs the address of any matching pages to the console.
 
-get('http://marijnhaverbeke.nl');
-    urlsArray = []
-    urlsFound = []
-function  callback(textHTML) {
-    if(textHTML.search( /piranha/ig) != -1 )
-        return true
+function sendReqToItem(urlsArray) {
+    return urlsArray.map(item => {
+        return fetch(`http://marijnhaverbeke.nl/${item}`)
+            .then(response => response.status === 200 && response.text())
+            .then(text => text.includes('piranha') && item)
+            .catch(error => console.log(error))
+    })
 }
 
 function get(url, callback) {
-
-        fetch(url)
-
-            .then(function (response) {
-                if (response.status === 200)
-                    return response.text();
-            })
-            .then(function (text) {
-                urlsArray = text.match(/<a href=["|'](.*?)["|']/g);
-
-                urlsArray.forEach( (item) => {
-                    item.splice(1, 10);
-                    item.splice(-3, 2);
-                })
-
-                console.log(urlsArray);
-            })
-
-                urlsArray.map( (item) => {
-
-                })
-
-    //         }) {
-    //
-    // }
-    //         })
-// /<a href=[\"|\'](.*?)[\"|\']/is
-//str.match(reg) с флагом g
-
-
-            .catch(new Error("Network error"))
-    }
+    fetch(url)
+        .then(response => response.status === 200 && response.text())
+        .then(text => text
+            .match(/<a href=["|'](?!http)(?!mail)(.*?)["|']/ig)
+            .map(item => item.slice(9, -1))
+        )
+        .then(urlsArray => {
+            Promise.all(sendReqToItem(urlsArray))
+                .then( foo => callback(foo.filter(cur => cur)))
+        })
+        .catch(error => console.log(error))
+}
+get(
+    'http://marijnhaverbeke.nl',
+    res => console.log(res)
+);
