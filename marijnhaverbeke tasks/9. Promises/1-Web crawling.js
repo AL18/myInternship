@@ -12,6 +12,7 @@
 
 get('http://marijnhaverbeke.nl');
     urlsArray = []
+    urlsFound = []
 function  callback(textHTML) {
     if(textHTML.search( /piranha/ig) != -1 )
         return true
@@ -26,14 +27,25 @@ function get(url, callback) {
                     return response.text();
             })
             .then(function (text) {
+                urlsArray = text.match(/<a href=["|'](.*?)["|']/g);
 
-            }
+                urlsArray.forEach( (item) => {
+                    item.splice(1, 10);
+                    item.splice(-3, 2);
+                })
 
-            }) {
-
-    }
+                console.log(urlsArray);
             })
 
+                urlsArray.map( (item) => {
+
+                })
+
+    //         }) {
+    //
+    // }
+    //         })
+// /<a href=[\"|\'](.*?)[\"|\']/is
 //str.match(reg) с флагом g
 
 
