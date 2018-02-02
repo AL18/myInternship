@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Task from './Task'
 
+
 class Field extends Component {
 
     constructor() {
@@ -8,38 +9,62 @@ class Field extends Component {
 
         this.state = {
             tasks: []
-
         }
     };
 
     add = (text) => {
-        let arr = this.state.tasks
-        arr.push(text)
-        this.setState({tasks: arr})
+        if(this.refs.newTask.value) {
+            const arr = this.state.tasks.concat();
+            arr.push(text);
+            this.setState({tasks: arr})
+            this.refs.newTask.value = null;
+            console.log(this.state);
+        }
+        else alert('Empty field!')
     };
 
     deleteBlock = (i) => {
-        let arr = this.state.tasks
+        let arr = this.state.tasks.concat()
         arr.splice(i, 1);
         this.setState({tasks: arr});
     };
 
     updateText = (text, i) => {
-      let arr = this.state.tasks;
-      arr[i] = text;
-      this.setState({tasks: arr})
+        let arr = this.state.tasks.concat();
+        arr[i] = text;
+        this.setState({tasks: arr})
     };
 
     eachTask = (item, i) => {
-        return (<Task key={i} index={i} update={this.updateText} deleteItem={this.deleteBlock}>
-                    {item}
-                </Task>)
+        return (
+            <Task
+                key={i}
+                index={i}
+                update={this.updateText}
+                deleteItem={this.deleteBlock}
+            >
+                {item}
+            </Task>)
     };
 
     render(){
         return (
             <div className="field">
-                <button onClick={this.add.bind(null, 'Simple task')} className='btn new'>New task</button>
+
+                <input
+                    required
+                    ref='newTask'
+                    type="text"
+                    placeholder = 'What to do?'
+                />
+                <button
+                    onClick={ () => this.add(this.refs.newTask.value) }
+                    className='btn new'
+
+                >
+                    Create task
+                </button>
+
                 {this.state.tasks.map(this.eachTask)}
             </div>
         );

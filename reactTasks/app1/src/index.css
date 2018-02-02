@@ -7,7 +7,7 @@ body {
   padding: 10px;
   width: 25%;
   margin-left: 37.5%;
-  color: #fff;
+  color: #000;
   font-size: 1.3em;
   flex-direction: column;
   align-items: center;
@@ -19,6 +19,8 @@ body {
   margin-bottom: 20px;
   padding: 10px;
   width: 80%;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
 }
 
 .box:last-child {
@@ -34,19 +36,24 @@ button.btn {
   color:#fff;
 }
 
-.btn.light {
-  background-color: #4eafc9;
-  border: 2px solid #2a89a2;
+
+.delete {
+  background: transparent;
+  border: none;
 }
 
-.btn.red {
-  background-color: #dda66d;
-  border: 2px solid #b6821a;
+.delete:hover {
+  color: #9e0c0f;
+
 }
 
-.btn.light:hover {
-  background-color: #2a89a2;
-  border: 2px solid #1d6f85;
+.edit {
+  background: transparent;
+  border: none;
+}
+
+.edit:hover {
+  color: #3338ff;
 }
 
 .btn.red:hover {

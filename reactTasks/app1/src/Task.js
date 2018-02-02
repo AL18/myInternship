@@ -24,8 +24,10 @@ class Task extends Component {
         return (
             <div className='box'>
                 <div className='text'>{this.props.children}</div>
-                <button onClick={this.edit} className='btn light'>Edit</button>
-                <button onClick={this.remove} className='btn red'>Delete</button>
+                <div>
+                    <button onClick={this.edit} className='edit'><i class="far fa-edit"></i></button>
+                    <button onClick={this.remove} className='delete'><i class="far fa-trash-alt"></i></button>
+                </div>
             </div>
         );
     };
