@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Task extends Component {
+
+export default class Task extends Component {
+
     constructor() {
         super();
-        this.state = { edit: false };
-    };
+        this.state = {
+            edit: false
+        }
+    }
 
     edit = () => {
         this.setState( {edit: true} )
@@ -20,13 +24,22 @@ class Task extends Component {
         this.setState( {edit: false} )
     };
 
+
     rendNorm = () => {
         return (
             <div className='box'>
-                <div className='text'>{this.props.children}</div>
                 <div>
-                    <button onClick={this.edit} className='edit'><i class="far fa-edit"></i></button>
-                    <button onClick={this.remove} className='delete'><i class="far fa-trash-alt"></i></button>
+                    <input
+                        type="checkbox"
+                        onChange={this.props.changeStatus}
+                        // defaultChecked={this.props.status}
+
+                    />
+                    <span className={this.props.task.status ? 'text notDone' : 'text'}>{this.props.task.name}</span>
+                </div>
+                <div>
+                    <button onClick={this.edit} className='edit'><i className="far fa-edit" /></button>
+                    <button onClick={this.remove} className='delete'><i className="far fa-trash-alt" /></button>
                 </div>
             </div>
         );
@@ -35,7 +48,7 @@ class Task extends Component {
     rendEdit = () => {
         return (
             <div className='box'>
-                <textarea ref='newTxt' defaultValue={this.props.children}/>
+                <textarea ref='newTxt' defaultValue={this.props.task.name} />
                 <button onClick={this.save} className='btn success'>Save</button>
             </div>
         );
@@ -48,4 +61,3 @@ class Task extends Component {
 
 }
 
-export default Task;

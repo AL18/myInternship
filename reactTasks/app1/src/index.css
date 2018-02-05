@@ -79,3 +79,8 @@ button.btn {
   background: #d7d032;
   border: 2px solid #bcb524;
 }
+
+.notDone {
+  text-decoration: line-through;
+  color: #979797;
+}

@@ -2079,7 +2079,7 @@
 
 																						var options = { "hmr": true };
 																						options.transform = transform;
-																						// add the styles to the DOM
+																						// addTask the styles to the DOM
 																						var update = __webpack_require__(4)(content, options);
 																						if (content.locals) module.exports = content.locals;
 																						// Hot Module Replacement
@@ -2266,10 +2266,10 @@
 																							// tags it will allow on a page
 																							if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
 
-																							// By default, add <style> tags to the <head> element
+																							// By default, addTask <style> tags to the <head> element
 																							if (!options.insertInto) options.insertInto = "head";
 
-																							// By default, add <style> tags to the bottom of the target
+																							// By default, addTask <style> tags to the bottom of the target
 																							if (!options.insertAt) options.insertAt = "bottom";
 
 																							var styles = listToStyles(list, options);
@@ -2428,7 +2428,7 @@
 																									// This allows running runtime transformations on the css.
 																									obj.css = result;
 																								} else {
-																									// If the transform function returns a falsy value, don't add this css.
+																									// If the transform function returns a falsy value, don't addTask this css.
 																									// This allows conditional loading of css
 																									return function () {
 																										// noop
@@ -2627,7 +2627,7 @@
 																								var newUrl;
 
 																								if (unquotedOrigUrl.indexOf("//") === 0) {
-																									//TODO: should we add protocol?
+																									//TODO: should we addTask protocol?
 																									newUrl = unquotedOrigUrl;
 																								} else if (unquotedOrigUrl.indexOf("/") === 0) {
 																									// path should be relative to the base url

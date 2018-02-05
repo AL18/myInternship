@@ -13,7 +13,7 @@
 // Use a Set object to track the nodes that you've already visited ' +
 // '(to avoid going around in circles endlessly when the graph contains a cycle).
 //
-// The Set methods you'll need for that are .add(value) and .has(value).
+// The Set methods you'll need for that are .addTask(value) and .has(value).
 
 
 
