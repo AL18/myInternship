@@ -44,7 +44,6 @@ const todos = (todos = [], action) => {
         case DELETE_TODO:
             return todos.filter( (todo, index) => index !== action.index);
 
-
         default: return todos;
     }
 };

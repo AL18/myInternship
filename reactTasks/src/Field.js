@@ -10,13 +10,16 @@ import {ALL, DONE, UNDONE} from "./actions/initialActions";
 class Field extends Component {
 
     getVisibleTodos = (todos, filter) => {
-        console.log(todos, filter);
-        if (filter === ALL)
-            return todos;
-        else if (filter === UNDONE)
-            return todos.filter(todo => !todo.done);
-        else if (filter === DONE)
-            return todos.filter(todo => todo.done);
+        return todos.map((cur) => {
+
+            if (filter === ALL && cur) return cur;
+
+            else if (filter === DONE && cur.done) return cur;
+
+            else if (filter === UNDONE && !cur.done) return cur;
+
+            else return null
+        })
     };
 
     render(){
@@ -40,7 +43,7 @@ class Field extends Component {
                     onClick={ () => {
                         this.props.dispatch( addTodo(this.refs.newTask.value) );
                         this.refs.newTask.value = null;
-                        }
+                    }
                     }
                     className='btn new'
                 >
@@ -78,15 +81,18 @@ class Field extends Component {
 
                 {
                     visibleTodos.map( (item, i) => {
-                        return (
-                            <Task
-                                key={i}
-                                index={i}
-                                text={item.text}
-                                edit={item.edit}
-                                done={item.done}
-                            />)}
-                    )
+                        return (item) ?
+                            (
+                                <Task
+                                    key={i}
+                                    index={i}
+                                    text={item.text}
+                                    edit={item.edit}
+                                    done={item.done}
+                                />
+                            )
+                            : null;
+                    })
                 }
 
             </div>
