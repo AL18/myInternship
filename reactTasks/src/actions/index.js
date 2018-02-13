@@ -5,8 +5,7 @@ import {
     DELETE_TODO,
     EDIT_TODO,
     SAVE_TODO,
-    GET_VISIBLE_TODOS,
-    ALL
+    UPLOAD_TODOS
 } from '../actions/initialActions'
 
 
@@ -41,10 +40,9 @@ export const deleteTodo = (index) => ({
     index
 });
 
-export const getVisibleTodos = (filter) => ({
-    type: GET_VISIBLE_TODOS,
-    filter
+export const uploadTodos = (newTodos) => ({
+    type: UPLOAD_TODOS,
+    newTodos
 });
-
 
 

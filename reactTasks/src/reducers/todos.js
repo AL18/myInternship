@@ -4,6 +4,7 @@ import {
     SAVE_TODO,
     TOGGLE_TODO,
     DELETE_TODO,
+    UPLOAD_TODOS
 } from '../actions/initialActions'
 
 const todos = (todos = [], action) => {
@@ -43,6 +44,13 @@ const todos = (todos = [], action) => {
 
         case DELETE_TODO:
             return todos.filter( (todo, index) => index !== action.index);
+
+        case UPLOAD_TODOS:
+            return [
+                ...todos,
+                ...action.newTodos
+            ];
+
 
         default: return todos;
     }

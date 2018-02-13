@@ -16,7 +16,7 @@ class Task extends Component {
                         onChange={ () => this.props.dispatch(toggleTodo(this.props.index)) }
                         checked={this.props.done}
                     />
-                    <span className={this.props.done ? 'text notDone' : 'text'}>{this.props.text}</span>
+                        <span className={`text ${this.props.done ? 'notDone' : ''}`}>{this.props.text}</span>
                 </div>
                 <div>
                     <button

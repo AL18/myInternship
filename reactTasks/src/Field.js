@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Task from './Task'
 import {addTodo} from './actions/index'
 import { connect } from 'react-redux'
-import {setVisibilityFilter} from "./actions";
+import {setVisibilityFilter, uploadTodos} from "./actions";
 import {ALL, DONE, UNDONE} from "./actions/initialActions";
 
-
+const url = 'http://www.json-generator.com/api/json/get/cpTxhFtFWq?indent=2';
 
 class Field extends Component {
+
+    getTodosFromServer
 
     getVisibleTodos = (todos, filter) => {
         return todos.map((cur) => {
@@ -23,6 +25,18 @@ class Field extends Component {
     };
 
     render(){
+
+        if(this.props.todos.length < 1) {
+            fetch(url)
+                .then( (response) => {
+                    return response.json();
+                })
+                .then( (arr) => {
+                    console.log(...arr);
+                    this.props.dispatch(uploadTodos(arr))
+                });
+        }
+
 
         const visibleTodos = this.getVisibleTodos(
             this.props.todos,
