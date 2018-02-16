@@ -40,9 +40,9 @@ export const deleteTodo = (index) => ({
     index
 });
 
-export const uploadTodos = (newTodos) => ({
+export const uploadTodos = (url) => ({
     type: UPLOAD_TODOS,
-    newTodos
+    url
 });
 
 

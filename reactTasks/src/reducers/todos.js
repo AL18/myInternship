@@ -4,7 +4,8 @@ import {
     SAVE_TODO,
     TOGGLE_TODO,
     DELETE_TODO,
-    UPLOAD_TODOS
+    UPLOAD_TODOS_FAILURE,
+    UPLOAD_TODOS_SUCCESS
 } from '../actions/initialActions'
 
 const todos = (todos = [], action) => {
@@ -45,14 +46,18 @@ const todos = (todos = [], action) => {
         case DELETE_TODO:
             return todos.filter( (todo, index) => index !== action.index);
 
-        case UPLOAD_TODOS:
+
+        case UPLOAD_TODOS_SUCCESS:
             return [
-                ...todos,
-                ...action.newTodos
-            ];
+                    ...todos,
+                    ...action.response
+                ];
 
+        case UPLOAD_TODOS_FAILURE:
+            alert('failure');
+            return todos;
 
-        default: return todos;
+            default: return todos;
     }
 };
 

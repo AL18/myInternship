@@ -9,34 +9,25 @@ const url = 'http://www.json-generator.com/api/json/get/cpTxhFtFWq?indent=2';
 
 class Field extends Component {
 
-    getTodosFromServer
-
     getVisibleTodos = (todos, filter) => {
         return todos.map((cur) => {
 
             if (filter === ALL && cur) return cur;
 
-            else if (filter === DONE && cur.done) return cur;
+            if (filter === DONE && cur.done) return cur;
 
-            else if (filter === UNDONE && !cur.done) return cur;
+            if (filter === UNDONE && !cur.done) return cur;
 
             else return null
         })
     };
 
+    componentDidMount() {
+        this.props.dispatch(uploadTodos(url))
+    };
+
+
     render(){
-
-        if(this.props.todos.length < 1) {
-            fetch(url)
-                .then( (response) => {
-                    return response.json();
-                })
-                .then( (arr) => {
-                    console.log(...arr);
-                    this.props.dispatch(uploadTodos(arr))
-                });
-        }
-
 
         const visibleTodos = this.getVisibleTodos(
             this.props.todos,
